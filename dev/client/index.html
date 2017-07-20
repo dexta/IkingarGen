@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="favicon.ico">
+  <title>Angular Skeleton with ui-Bootstrap</title>
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/font-awesome.css" rel="stylesheet">
+  <link href="css/customStyle.css" rel="stylesheet">
+</head>
+<body ng-app="wurzel">
+<div class="container">
+  <div  class="row hidden-md-down"
+        ng-controller="navController as nav"
+        ng-include src="'./app/nav/nav.html'">
+  </div>
+  <div  class="row hidden-lg-up"
+        ng-controller="navController as nav"
+        ng-include src="'./app/nav/nav1.html'">
+  </div>
+  
+  <!-- content from lattenzaunrouter spawn here -->
+  <ng-view>
+  </ng-view>
+</div>
+
+<script src="./js/angular.js"></script>
+<script src="./js/angular-route.js"></script>
+<script src="./js/ui-bootstrap.js"></script>
+
+<script src="./app/__root.js"></script>
+<script src="./app/lattenzaunRouter.js"></script>
+
+<script src="./app/service/default.js"></script>
+
+<script src="./app/nav/navController.js"></script>
+<script src="./app/default/controller.js"></script>
