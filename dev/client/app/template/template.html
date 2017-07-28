@@ -1,0 +1,68 @@
+<div class="panel-info">
+  <div class="panel-heading">
+    <h1>Edit templates</h1>
+  </div>
+
+  <div class="panel-body">
+    <div class="col-lg-9">
+      <div  ng-model="selectedFile.text"
+            ui-ace="{
+              require: ['js/ace/'],
+              advanced: {
+
+                tabSize: 2,
+              },
+              useWrapMode : true,
+              showGutter: false,
+              theme:'terminal',
+              mode: 'text',
+              onLoad: aceLoaded,
+              }">
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="input-group">
+        <span class="input-group-addon" for="test_">Filename </span>
+        <select class="form-control" 
+                ng-options="opt.name for opt in templateFiles track by opt.name"
+                ng-model="selectedFile" id="test_"
+                ng-change="updateEditor()">
+          
+        </select>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon">Mode</span>
+        <select class="form-control" ng-change="updateMode()" ng-model="selectedMode"> 
+          <option ng-repeat="mode in modeList">{{mode}}</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-addon">Theme</span>
+        <select class="form-control" ng-change="updateTheme()" ng-model="selectedTheme"> 
+          <option ng-repeat="mode in themeList">{{mode}}</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-addon">Font Size</span>
+        <select class="form-control" ng-change="updateFontSize()" ng-model="selectedFontSize"> 
+          <option ng-repeat="mode in fontSizeList">{{mode}}</option>
+        </select>
+      </div>
+
+      <hr>
+
+      <ace-opt-list editor="editor" ace-opts="modeOpts"></ace-opt-list>
+      <ace-opt-list editor="editor" ace-opts="themeOpts"></ace-opt-list>
+      <ace-opt-list editor="editor" ace-opts="fontOpts"></ace-opt-list>
+    </div>
+  </div>
+</div>
+
+
+  <!-- 
+    enableBasicAutocompletion: true,
+    enableLiveAutocompletion: true,
+    blockScrolling: 'Infinity',
+   -->

@@ -1,0 +1,48 @@
+
+<h2>icinga2 Host Data</h2>
+<p>let start with dynamic table</p>            
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </th>
+      <th ng-repeat="(heattitle,val) in tableConfig.view.pre" ng-if="val">{{heattitle}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tbody ng-repeat="line in tableCont">
+    <tr ng-hide="isLineOpen[$index]">
+      <td> <i class="fa fa-plus-square-o" aria-hidden="true" ng-click="isLineOpen[$index]=!isLineOpen[$index]"></i> </td>
+      <td ng-repeat="(key,val) in tableConfig.view.pre" ng-if="val">{{line[key]}}</td>
+    </tr>
+
+    <tr ng-show="isLineOpen[$index]">
+      <td> <i class="fa fa-minus-square-o" aria-hidden="true" ng-click="isLineOpen[$index]=!isLineOpen[$index]"></i> </td>
+      
+      </td>
+      <td colspan="{{getLen(line)-1}}">
+        <div ng-repeat="(key, val) in line" ng-if="tableConfig.view.full[key]" class="col-lg-3 col-md-4 col-sm-6">
+          <!-- {{key}} = {{val}} -->
+          <div ng-if="tableConfig.edit[key].type==='String' || tableConfig.edit[key].type==='Int' || tableConfig.edit[key].type==='Float'"
+               class="input-group">
+            <span class="input-group-addon">{{key}}</span>
+            <input type="text" class="form-control" placeholder="{{val}}" ng-model="line[key]">
+          </div>
+          <!-- <div ng-if="" >
+            <span class="input-group-addon">{{key}}</span>
+            <input type="number" step="{{(tableConfig.edit[key].type==='Int')? 1 : 0.1}}" class="form-control" ng-model="line[key]">
+          </div> -->
+          <div ng-if="tableConfig.edit[key].type==='Select'">
+            <div class="input-group">
+              <span class="input-group-addon" for="test_{{$index}}">{{key}}</span>
+              <select class="form-control" ng-model="line[key]" id="test_{{$index}}">
+                <option ng-repeat="opt in tableConfig.edit[key].options" value="{{opt}}">{{opt}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      <td>
+      <td> <button class="btn btn-danger" ng-click="updateData($index,line)">save</button>
+    </tr>
+    </tbody>
+  </tbody>
+</table>

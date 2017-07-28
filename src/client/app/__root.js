@@ -1,1 +1,1 @@
-var wurzel = angular.module('wurzel',['ngRoute','ui.bootstrap']);
+var wurzel = angular.module('wurzel',['ngRoute','ui.bootstrap','ui.ace']);
