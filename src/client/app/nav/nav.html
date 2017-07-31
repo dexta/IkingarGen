@@ -1,44 +1,15 @@
-<!-- <div class="hidden-lg hidden-md" ng-click="toggleMenu=!toggleMenu">
-  <button class="btn btn-default">
-    <i class="fa fa-bars" aria-hidden="true"></i>
+<div class="row text-center">
+  <button class="btn btn-{{alertColor}} btn-lg">
+    I-kinGen -- Section * {{sectionName}} *
   </button>
-</div> -->
-
-<div ng-hide="toggleMenu">
-  <div class="col-lg-2 col-md-2 col-sm-1 col-xs-1" ng-repeat="(key,val) in menuItems">
-    <button ng-click="gotoPage(val.path)" class="btn btn-{{val.color}}">
+</div>
+<hr>
+<div class="row">
+  <div class="text-center col-lg-2 col-md-2 col-sm-2 col-xs-4" ng-repeat="(key,val) in menuItems">
+    <button ng-click="gotoPage(val)" class="btn btn-{{val.color}}">
       <i class="fa fa-{{val.icon}} fa-lg" aria-hidden="true"></i>
       <span class="hidden-sm hidden-xs"> {{val.name}}</span>
     </button>
   </div>
-
-
-<!--   <div class="col-lg-2 col-md-2 col-sm-1 col-xs-1">
-    <button ng-click="gotoPage('home')" class="btn btn-success">
-      <i class="fa fa-home fa-lg" aria-hidden="true"></i>
-      <span class="hidden-sm hidden-xs"> Home </span>
-    </button>
-  </div>
-  <div class="col-lg-2 col-md-2 col-sm-1 col-xs-1">
-    <button ng-click="gotoPage('config')" class="btn btn-info">
-      <i class="fa fa-table fa-lg" aria-hidden="true"></i>
-      <span class="hidden-sm hidden-xs"> Config </span>
-    </button>
-  </div>
-  <div class="col-lg-2 col-md-2 col-sm-1 col-xs-1">
-    <button ng-click="gotoPage('template')" class="btn btn-warning">
-      <i class="fa fa-file-text-o fa-lg" aria-hidden="true"></i>
-      <span class="hidden-sm hidden-xs"> Template </span>
-    </button>
-  </div>
-  <div class="col-lg-2 col-md-2 col-sm-1 col-xs-1">
-    <button ng-click="gotoPage('data')" class="btn btn-danger">
-      <i class="fa fa-database fa-lg" aria-hidden="true"></i>
-      <span class="hidden-sm hidden-xs"> Data </span>
-    </button>
-  </div>
-
-  <div>
-    <button class="btn btn-dark">Count: {{foo}}</button>
-  </div> -->
 </div>
+<hr>

@@ -97,6 +97,17 @@ gulp.task('copy-dev-fonts-reload',['copy-dev-fonts'],function(done) {
   done();
   });
 
+gulp.task('copy-dev-uib',function(cb) {
+  pump([
+    gulp.src('src/client/uib/**/*.*'),
+    gulp.dest('./dev/client/uib/')
+    ],cb);
+  });
+
+gulp.task('copy-dev-uib-reload',['copy-dev-uib'],function(done) {
+  browserSync.reload();
+  done();
+  });
 
 
 gulp.task('browser-sync-dev', function() {
@@ -125,5 +136,6 @@ gulp.task('watch-dev',['build-dev-all','browser-sync-dev'],function(){
   gulp.watch("src/client/app/**/*.html", ['copy-dev-html-app-reload']);
   gulp.watch("src/client/js/**/*.js", ['copy-dev-js-libs-reload']);
   gulp.watch("src/client/fonts/*.*", ['copy-dev-fonts-reload']);
+  gulp.watch("src/client/uib/*.*", ['copy-dev-uib-reload']);
   // gulp.watch("src/img/live/*.*", ['copy-dev-images-reload']);
   });

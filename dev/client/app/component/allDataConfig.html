@@ -1,0 +1,76 @@
+<div class="panel panel-{{adc.color}}">
+  <div class="panel-heading">
+    <h3 class="panel-title">Edit data</h3>
+  </div>
+  <div class="panel-body">
+    <div class="col-lg-2" ng-repeat="(opt,option) in adc.config.view.full">
+      <div class="form-group">
+        <label for="viewOpt">
+          <input type="checkbox" ng-model="adc.config.view.full[opt]">
+          {{opt}}
+        </label>
+      </div>
+    </div>
+    <div class="col-lg-1 pull-right input-group">
+      <button class="btn btn-{{adc.color}}" ng-click="adc.update()">Save</button>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-{{adc.color}}">
+  <div class="panel-heading">
+    <h3 class="panel-title">Preview data</h3>
+  </div>
+  <div class="panel-body">
+    <div class="col-lg-2" ng-repeat="(opt,option) in adc.config.view.full">
+      <div class="form-group">
+        <label for="viewOpt">
+          <input type="checkbox" ng-model="adc.config.view.pre[opt]">
+          {{opt}}
+        </label>
+      </div>
+    </div>
+    <div class="col-lg-1 pull-right input-group">
+      <button class="btn btn-{{adc.color}}" ng-click="adc.update()">Save</button>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-{{adc.color}}">
+  <div class="panel-heading">
+    <h3 class="panel-title">All data</h3>
+  </div>
+  <div class="panel-body">
+    Add or Remove new Datapoints here
+    <div class="col-lg-1 pull-right input-group">
+      <button class="btn btn-{{adc.color}}" ng-click="saveNewData()">Save</button>
+    </div>
+    <div class="col-lg-1 pull-right input-group">
+      <button class="btn btn-info" ng-click="addNewData()">Add</button>
+    </div>
+    <div class="col-lg-1 pull-right input-group">
+      <button class="btn btn-danger" ng-click="removeThatData()">Remove</button>
+    </div>
+  </div>
+  <div class="table">
+    <table class="table table-hover">
+      <tr>
+        <th><i class="fa fa-pencil-square-o" aria-hidden="true"></i></th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Len</th>
+        <th>Default</th>
+        <th>Option</th>
+      </tr>
+      <tr ng-repeat="(opt,option) in adc.config.view.full">
+        <td><i class="fa fa-pencil-square-o" aria-hidden="true"></td>
+        <td>{{opt}}</td>
+        <td>{{adc.config.edit[opt].type}}</td>
+        <td>{{adc.config.edit[opt].len}}</td>
+        <td>default Value</td>
+        <td>option list</td>
+      </tr>
+    </table>
+   
+  </div>
+</div>

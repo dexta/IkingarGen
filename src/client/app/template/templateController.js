@@ -9,7 +9,6 @@ wurzel.controller('templateController',function($scope) {
   $scope.editor = {};
 
 
-
   $scope.updateEditor = function updateEditor() {
     console.dir($scope.selectedFile);
   }
@@ -41,25 +40,13 @@ wurzel.controller('templateController',function($scope) {
     list: [8,10,12,14,16,18,22,32],
   }
 
-  $scope.modeList = ['apache_conf','css','dockerfile','dot','gitignore','javascript','json','markdown','mysql','php','plain_text','python','sh','html'];
-  $scope.selectedMode = '';
-  $scope.updateMode = function updateMode() {
-    console.log("mode "+$scope.selectedMode);
-    $scope.editor.setOption('mode','ace/mode/'+$scope.selectedMode);
-  }
+  $scope.showContent = function($fileContent,$filename){
+    $scope.templateFiles.push({ name:$filename, text: $fileContent });
+  };
 
-  $scope.themeList = ['ambiance','chaos','chrome','clouds','clouds_midnight','cobalt','crimson_editor','dawn','dreamweaver','eclipse','github','gob','gruvbox','idle_fingers','iplastic','katzenmilch','kr_theme','kuroir','merbivore','merbivore_soft','mono_industrial','monokai','pastel_on_dark','solarized_dark','solarized_light','sqlserver','terminal','textmate','tomorrow','tomorrow_night_blue','tomorrow_night_bright','tomorrow_night_eighties','tomorrow_night','twilight','vibrant_ink','xcode'];
-  $scope.selectedTheme = '';
-  $scope.updateTheme = function updateMode() {
-    console.log("mode "+$scope.selectedTheme);
-    $scope.editor.setOption('theme','ace/theme/'+$scope.selectedTheme);
-  }
-
-  $scope.fontSizeList = [8,10,12,14,16,18,22,32];
-  $scope.selectedFontSize = '';
-  $scope.updateFontSize = function updateMode() {
-    console.log("fontsize "+$scope.selectedFontSize);
-    $scope.editor.setFontSize(parseInt($scope.selectedFontSize));
-  }
+  $scope.filenameNew = "new filename";
+  $scope.addNewFile = function addNewFile() {
+    $scope.templateFiles.push({ name:$scope.filenameNew, text: $scope.selectedFile.text });
+  };
 
 });

@@ -1,0 +1,43 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </th>
+      <th ng-repeat="(heattitle,val) in et.etConfig.view.pre" ng-if="val">{{heattitle}}</th>
+    </tr>
+  </thead>
+
+  <tbody ng-repeat="line in et.etContent">
+  <tr ng-hide="isLineOpen">
+    <td> <i class="fa fa-plus-square-o" aria-hidden="true" ng-click="isLineOpen=!isLineOpen"></i> </td>
+    <td ng-repeat="(key,val) in et.etConfig.view.pre" ng-if="val">{{line[key]}}</td>
+  </tr>
+
+  <tr ng-show="isLineOpen">
+    <td> <i class="fa fa-minus-square-o" aria-hidden="true" ng-click="isLineOpen=!isLineOpen"></i> </td>
+    
+    <td colspan="{{getLen(line)-1}}">
+      <div ng-repeat="(key, val) in line" ng-if="et.etConfig.view.full[key]" class="col-lg-3 col-md-4 col-sm-6">
+        <!-- {{key}} = {{val}} -->
+        <div ng-if="et.etConfig.edit[key].type==='String' || et.etConfig.edit[key].type==='Int' || et.etConfig.edit[key].type==='Float'"
+             class="input-group">
+          <span class="input-group-addon">{{key}}</span>
+          <input type="text" class="form-control" placeholder="{{val}}" ng-model="line[key]">
+        </div>
+        <!-- <div ng-if="" >
+          <span class="input-group-addon">{{key}}</span>
+          <input type="number" step="{{(et.etConfig.edit[key].type==='Int')? 1 : 0.1}}" class="form-control" ng-model="line[key]">
+        </div> -->
+        <div ng-if="et.etConfig.edit[key].type==='Select'">
+          <div class="input-group">
+            <span class="input-group-addon" for="test_{{$index}}">{{key}}</span>
+            <select class="form-control" ng-model="line[key]" id="test_{{$index}}">
+              <option ng-repeat="opt in et.etConfig.edit[key].options" value="{{opt}}">{{opt}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    <td>
+    <td> <button class="btn btn-primary" ng-click="et.updata($index,line)">save</button>
+  </tr>
+  </tbody>
+</table>

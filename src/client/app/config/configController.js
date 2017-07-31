@@ -8,5 +8,7 @@ wurzel.controller('configController',function($scope, dataService) {
   $scope.saveOpt = function saveOpt() {
     dataService.setConfig($scope.tConf);
   }
-
+  $scope.updateData = function updateData() {
+    console.dir($scope.tConf);
+  }
 });

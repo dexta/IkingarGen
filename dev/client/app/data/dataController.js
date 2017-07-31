@@ -10,7 +10,7 @@ wurzel.controller('dataController',function($scope,dataService) {
   // ];
   $scope.tableConfig = {};
   dataService.getConfig().then(function(config){
-    $scope.tableConfig = config;
+    $scope.tableConfig = config.data;
     console.dir(config);
   });
   $scope.tableCont = {};
