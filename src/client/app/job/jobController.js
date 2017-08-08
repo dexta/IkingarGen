@@ -6,14 +6,26 @@ wurzel.controller('jobController',function($scope,dataService) {
   $scope.config = {};
   dataService.getConfig().then(function(config){
     $scope.config = config.job;
-    console.dir(config);
+    updateConfigTemplate();
   });
   $scope.content = {};
   dataService.getJobs().then(function(data){
     $scope.content = data;
   });
 
+  $scope.template = [];
+  dataService.getTemplate().then(function(template){
+    $scope.template = template.map(function(e){ return e.name;});
+    updateConfigTemplate();
+  });
+
   $scope.updateData = function updateData(index,line) {
     console.log(index,line);
   };
+
+  function updateConfigTemplate() {
+    if( ($scope.config.edit||false) && ($scope.template.length>0||false) ) {
+      $scope.config.edit.template.options = $scope.template;
+    }
+  }
 });

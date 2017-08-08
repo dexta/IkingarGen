@@ -15,10 +15,11 @@ wurzel.component('aceOptList', {
   controller: function() {
     this.test = 'moreText';
     this.$onInit = function() {
-      console.dir(this);
+      // console.dir(this);
+      this.updateMode(this.aceOpts.selected);
     },
     this.updateMode = function updateMode() {
-      console.log("mode "+this.aceOpts.selected);
+      // console.log("mode "+this.aceOpts.selected);
       if(this.aceOpts.state==='fontsize') {
         this.editor.setFontSize( parseInt(this.aceOpts.selected) );
       } else {

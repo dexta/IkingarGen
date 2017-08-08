@@ -11,6 +11,11 @@ wurzel.component('edta', {
     this.isOpen = false;
     this.$onInit = function() {
       console.dir(this);
+    },
+    this.getLen = function getLen(obj) {
+      var c = [];
+      for(var i in obj) c.push(i);
+      return c.length;
     }
   }
 

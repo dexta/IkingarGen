@@ -15,7 +15,7 @@
   <tr ng-show="isLineOpen">
     <td> <i class="fa fa-minus-square-o" aria-hidden="true" ng-click="isLineOpen=!isLineOpen"></i> </td>
     
-    <td colspan="{{getLen(line)-1}}">
+    <td colspan="{{et.getLen(line)-1}}">
       <div ng-repeat="(key, val) in line" ng-if="et.etConfig.view.full[key]" class="col-lg-3 col-md-4 col-sm-6">
         <!-- {{key}} = {{val}} -->
         <div ng-if="et.etConfig.edit[key].type==='String' || et.etConfig.edit[key].type==='Int' || et.etConfig.edit[key].type==='Float'"
@@ -29,15 +29,17 @@
         </div> -->
         <div ng-if="et.etConfig.edit[key].type==='Select'">
           <div class="input-group">
-            <span class="input-group-addon" for="test_{{$index}}">{{key}}</span>
-            <select class="form-control" ng-model="line[key]" id="test_{{$index}}">
+            <span class="input-group-addon">{{key}}</span>
+            <select class="form-control" ng-model="line[key]">
               <option ng-repeat="opt in et.etConfig.edit[key].options" value="{{opt}}">{{opt}}</option>
             </select>
           </div>
         </div>
       </div>
+    </td>
     <td>
-    <td> <button class="btn btn-primary" ng-click="et.updata($index,line)">save</button>
+      <button class="btn btn-primary" ng-click="et.updata($index,line)">save</button>
+    </td>
   </tr>
   </tbody>
 </table>

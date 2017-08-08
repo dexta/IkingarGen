@@ -1,34 +1,32 @@
 wurzel.controller('dataController',function($scope,dataService) {
-  $scope.tmp = true;
-  
-  // $scope.tableHeads = ['URL','Teststr','Size','Time'];
-  // $scope.tableCont = [
-  //   {URL:'http://test.test/test1',Teststr:'TEST',Size:'4223',Time:'1.0'},
-  //   {URL:'https://test.test/test2',Teststr:'TEST2',Size:'64223',Time:'0.5'},
-  //   {URL:'http://test3.test/test3',Teststr:'noTEXT',Size:'500',Time:'2.0'},
-  //   {URL:'https://test5.test6/test7',Teststr:'TEST8',Size:'864223',Time:'23.0'}
-  // ];
-  $scope.tableConfig = {};
+  $scope.dataConfig = {};
   dataService.getConfig().then(function(config){
-    $scope.tableConfig = config.data;
+    $scope.dataConfig = config.data;
     console.dir(config);
   });
-  $scope.tableCont = {};
+  $scope.dataContent = {};
   dataService.getData().then(function(data){
-    $scope.tableCont = data;
+    $scope.dataContent = data;
   });
 
-  $scope.updateData = function updateData(index,line) {
-    $scope.tableCont[index] = line;
-    dataService.setData($scope.tableCont);
+  $scope.dataUpdate = function updateData(index,line) {
+    $scope.dataContent[index] = line;
+    dataService.setData($scope.dataContent);
   };
 
-  $scope.openLine = function openLine(index) {
-    console.log(index);
-  };
-  $scope.getLen = function getLen(obj) {
-    var c = [];
-    for(var i in obj) c.push(i);
-    return c.length;
-  }
+  $scope.metaConfig = {};
+  dataService.getConfig().then(function(config){
+    $scope.metaConfig = config.meta;
+    console.dir(config);
+  });
+
+  $scope.metaContent = [];
+  dataService.getMeta().then(function(meta){
+    $scope.metaContent = meta;
+  });
+  
+  $scope.metaUpdate = function updateData(index,line) {
+    $scope.metaContent[index] = line;
+    dataService.setMeta($scope.metaContent);
+  };  
 });

@@ -1,7 +1,13 @@
 wurzel.controller('navController',function($scope,$location,dataService) {
   $scope.alertColor = 'default';
   $scope.sectionName = 'Home';
-  // $scope.foo = -1;
+
+  function whereIam() {
+    var pa = $location.path().replace("/","");
+    $scope.gotoPage($scope.menuItems[pa]);
+    $scope.$apply();
+  }
+  setTimeout(function(){whereIam();},123);
 
   $scope.menuItems = {
     home:     {path:'/'         ,name:'Home'    ,icon:'home'            ,color:'default'},
@@ -13,12 +19,10 @@ wurzel.controller('navController',function($scope,$location,dataService) {
   };
   
   $scope.gotoPage = function(where) {
+    if(!where||false) return;
     $scope.alertColor = where.color;
     $scope.sectionName = where.name;
     $location.path(where.path);
   };
 
-  // dataService.observeFoo().then(null,null,function(foo){
-  //   $scope.foo = foo;
-  // });
 });

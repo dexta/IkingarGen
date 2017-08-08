@@ -1,6 +1,10 @@
-{{=it.name}}
-  vars.url = "{{=it.url}}"
-  vars.redirect = {{=it.redirect}}
-  vars.string = {{=it.string}}
-  vars.port = {{=it.port}}
-  
+{{~it.data :value:index}}
+  object Service "{{=value.URL}}" {
+    host_name = "{{=value.host}}"
+    check_command = "http_check"
+    vars.follow = "{{=value.Follow}}"
+    vars.string = "{{=value.Teststr}}"
+    vars.size = "{{=value.Size}}"
+    vars.time = "{{=value.Time}}"
+  }
+{{~}}
